@@ -1,0 +1,6 @@
+# Tested on Python 3.12.7 with the versions below.
+# Any reasonably recent release of these four packages should work.
+numpy>=1.24,<3
+scipy>=1.10
+pandas>=2.0
+matplotlib>=3.7

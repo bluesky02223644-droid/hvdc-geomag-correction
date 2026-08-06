@@ -1,0 +1,98 @@
+{
+  "protocol_version": "v3.0",
+  "implementation_name": "paired-session-z-correction",
+  "component": "Z",
+  "cohort_definition": {
+    "unit": "one station-level complete paired on-off session",
+    "strong_threshold_abs_nT": 3.0,
+    "weak_threshold_abs_nT": 0.8,
+    "session_reference": "signed catalog amplitude of the on-edge",
+    "off_edge_role": "pairing and on-off balance quality control"
+  },
+  "window_geometry": {
+    "baseline_length_s": 120,
+    "baseline_buffer_s": 10,
+    "minimum_valid_fraction": 0.8,
+    "fit_margin_s": 130
+  },
+  "baseline_qc": {
+    "drift_limit_nT_per_120s": 0.5,
+    "noise_floor_multiple": 5.0,
+    "noise_label_role": "diagnostic and analysis-subset eligibility; not a continuous-product release gate",
+    "noise_label_is_product_gate": false,
+    "diagnostic_only_effective_noise_nT": 2.0
+  },
+  "geometry_fit": {
+    "onset_bound_s": 300.0,
+    "tau_initial_s": 60.0,
+    "tau_min_s": 1.0,
+    "tau_max_s": 600.0,
+    "nuisance_intercept_bound_nT": 50.0,
+    "amplitude_lower_multiple": 0.5,
+    "amplitude_upper_multiple": 1.8,
+    "maximum_function_evaluations": 1000,
+    "long_session_threshold_min": 30.0,
+    "background_slope_clip_nT_per_s": 0.05
+  },
+  "edge_local_amplitude": {
+    "post_ramp_buffer_s": 20.0,
+    "maximum_window_s": 180.0,
+    "off_edge_buffer_s": 20.0,
+    "minimum_valid_samples": 5,
+    "baseline_reference": "observed pre-window median after background detrending",
+    "nuisance_intercept_used": false
+  },
+  "identifiability_gate": {
+    "absolute_floor_nT": 0.5,
+    "station_noise_floor_multiple": 3.0
+  },
+  "stable_run_gate": {
+    "centered_window_s": 60,
+    "minimum_run_s": 60,
+    "minimum_valid_fraction": 0.8,
+    "lower_percentile": 10.0,
+    "upper_percentile": 90.0,
+    "absolute_spread_floor_nT": 0.5,
+    "high_frequency_noise_multiple": 3.0,
+    "local_residual_rms_uses_same_threshold": true
+  },
+  "cross_station_guard": {
+    "enabled": true,
+    "corroboration_factor": 3.0,
+    "minimum_resolved_costations": 1,
+    "applies_only_to_catalog_weak_events": true,
+    "local_step_excess_margin_nT": 0.2,
+    "candidate_definition": "abs(A_baseline) > abs(A_ref) + 0.2 nT"
+  },
+  "catalog_overlap_guard": {
+    "enabled": true,
+    "fit_window_margin_s": 130,
+    "route": "structural_misfit"
+  },
+  "quality_flags": {
+    "0": "outside session; unchanged",
+    "1": "stable plateau; estimated offset subtracted",
+    "2": "switching transition; interpolated",
+    "3": "weak response; unchanged",
+    "4": "structural, noisy, invalid, or low-confidence interval; unchanged"
+  },
+  "route_precedence": [
+    "invalid_window",
+    "extreme_effective_noise_cutoff",
+    "catalog_overlap",
+    "cross_station_abstention",
+    "local_identifiability_abstention",
+    "geometry_fit",
+    "edge_local_window",
+    "stable_run_and_residual_gate",
+    "released"
+  ],
+  "release_semantics": {
+    "geometry_intercept_is_subtracted": false,
+    "background_is_subtracted": false,
+    "released_run_offset": "median(run) minus observed local background at run midpoint",
+    "transition_fill": "linear interpolation between flanking trusted values",
+    "explicit_spike_reconstruction": false
+  },
+  "random_seed": 20260725
+}

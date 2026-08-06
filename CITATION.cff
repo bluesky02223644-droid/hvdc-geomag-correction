@@ -1,0 +1,51 @@
+cff-version: 1.2.0
+title: >-
+  Event-guided correction of HVDC-induced geomagnetic disturbances
+  in 1 Hz observatory records
+message: >-
+  If you use this software, please cite both the software and the
+  accompanying paper.
+type: software
+authors:
+  - given-names: Qiaoling
+    family-names: Huo
+    affiliation: Institute of Geophysics, China Earthquake Administration
+  - given-names: Xizhen
+    family-names: Wang
+    email: wangxz@cea-igp.ac.cn
+    affiliation: Institute of Geophysics, China Earthquake Administration
+  - given-names: Xinxin
+    family-names: Ma
+    affiliation: Institute of Geophysics, China Earthquake Administration
+  - given-names: Suqin
+    family-names: Zhang
+    affiliation: Institute of Geophysics, China Earthquake Administration
+  - given-names: Yuxin
+    family-names: Guo
+    affiliation: Jiangsu Earthquake Bureau
+license: MIT
+version: 3.0.0
+keywords:
+  - geomagnetism
+  - HVDC interference
+  - observatory data
+  - data correction
+  - quality flags
+preferred-citation:
+  type: article
+  title: >-
+    Catalog-anchored, quality-flagged correction of HVDC-induced
+    Z-component offsets in 1 Hz geomagnetic observatory records
+  authors:
+    - given-names: Qiaoling
+      family-names: Huo
+    - given-names: Xizhen
+      family-names: Wang
+    - given-names: Xinxin
+      family-names: Ma
+    - given-names: Suqin
+      family-names: Zhang
+    - given-names: Yuxin
+      family-names: Guo
+  journal: Earth, Planets and Space
+  year: 2026
